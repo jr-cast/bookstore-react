@@ -30,6 +30,8 @@ code {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
+  background-color: white;
 }
 
 .listCont {
@@ -63,6 +65,173 @@ code {
 }
 
 .bookShelf {
-  height: 90vh;
-  background-color: lightgray;
+  min-height: 65vh;
+  width: 99.5vw;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
 }
+
+.card {
+  display: flex;
+  background-color: white;
+  height: 10em;
+  width: 75%;
+  justify-content: space-around;
+  margin-top: 2em;
+  box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  width: 18em;
+  height: 8em;
+  padding: 1em;
+  justify-content: center;
+}
+
+.meta > * {
+  margin: 0;
+}
+
+.meta .edit {
+  display: flex;
+  font-size: 1em;
+}
+
+.meta h4 {
+  color: #4386bf;
+}
+
+.meta h5 {
+  color: gray;
+}
+
+.edit > * {
+  margin-right: 0.5em;
+}
+
+.edit p {
+  margin-bottom: 0%;
+  color: #4386bf;
+}
+
+.percent {
+  width: 18em;
+  height: 8em;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.oval {
+  width: 4.25rem;
+  height: 4.25rem;
+  border: 5px solid #0080FF;
+  border-image-slice: 1;
+  border-radius: 50%;
+}
+
+.completed {
+  margin-left: 1em;
+}
+
+.completed .perc {
+  font-size: 1.75em;
+  margin: 0%;
+}
+
+.completed p {
+  font-size: 0.85em;
+  margin: 0%;
+}
+
+.data {
+  display: flex;
+}
+
+.chapter {
+  width: 18em;
+  height: 8em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-left: 1px solid whitesmoke;
+}
+
+.chapter > * {
+  margin: 0%;
+}
+
+.chapter button {
+  margin-top: 1em;
+  padding: 1em;
+  width: 15em;
+  background-color: #0080FF;
+  color: white;
+  font-weight: bolder;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.addBookCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 10em;
+  width: 75%;
+  border-top: 1px solid gray;
+}
+
+.addBookCont h2 {
+  margin-top: 0%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.inputs #book {
+  width: 60%;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+  font-size: 1.25em;
+  padding: 0.5em;
+}
+
+.inputs #author {
+  width: 20%;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+  font-size: 1.25em;
+  padding: 0.5em;
+}
+
+.inputs button {
+  padding: 1em;
+  width: 12em;
+  background-color: #0080FF;
+  color: white;
+  font-weight: bolder;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+

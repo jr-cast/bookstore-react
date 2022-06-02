@@ -1,12 +1,13 @@
-import './App.css';
 import Nav from './components/Nav';
 import BookShelf from './components/BookShelf';
+import AddBook from './components/AddBook';
 
 function App() {
   return (
     <div className="App">
-      <Nav></Nav>
+      <Nav />
       <BookShelf />
+      <AddBook />
     </div>
   );
 }
