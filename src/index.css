@@ -25,3 +25,44 @@ code {
     'Courier New',
     monospace;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.listCont {
+  display: flex;
+  list-style-type: none;
+}
+
+.listCont > * {
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+.leftCont {
+  display: flex;
+  align-items: center;
+}
+
+.leftCont h1 {
+  color: #0080FF;
+  font-size: 2em;
+}
+
+.userCont {
+  border: 1px solid black;
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.bookShelf {
+  height: 90vh;
+  background-color: lightgray;
+}
