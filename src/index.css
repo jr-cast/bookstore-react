@@ -26,6 +26,11 @@ code {
     monospace;
 }
 
+a {
+  text-decoration: none;
+  color: gray;
+}
+
 .navbar {
   display: flex;
   justify-content: space-around;
@@ -50,7 +55,7 @@ code {
 }
 
 .leftCont h1 {
-  color: #0080FF;
+  color: #0080ff;
   font-size: 2em;
 }
 
@@ -100,16 +105,17 @@ code {
   font-size: 1em;
 }
 
+.edit > * {
+  cursor: pointer;
+  margin-right: 0.5em;
+}
+
 .meta h4 {
   color: #4386bf;
 }
 
 .meta h5 {
   color: gray;
-}
-
-.edit > * {
-  margin-right: 0.5em;
 }
 
 .edit p {
@@ -129,7 +135,7 @@ code {
 .oval {
   width: 4.25rem;
   height: 4.25rem;
-  border: 5px solid #0080FF;
+  border: 5px solid #0080ff;
   border-image-slice: 1;
   border-radius: 50%;
 }
@@ -171,7 +177,7 @@ code {
   margin-top: 1em;
   padding: 1em;
   width: 15em;
-  background-color: #0080FF;
+  background-color: #0080ff;
   color: white;
   font-weight: bolder;
   border: none;
@@ -226,12 +232,10 @@ code {
 .inputs button {
   padding: 1em;
   width: 12em;
-  background-color: #0080FF;
+  background-color: #0080ff;
   color: white;
   font-weight: bolder;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
 }
-
-
