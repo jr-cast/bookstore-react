@@ -3,7 +3,16 @@ const ADDBOOK = 'bookstore/books/ADDBOOK';
 const REMOVEBOOK = 'bookstore/books/ADDBOOK';
 
 // Settting initial state
-const initialState = [];
+const initialState = [
+  {
+    title: 'Ghost in the Shell',
+    author: 'Masamune',
+  },
+  {
+    title: 'Fight Club',
+    author: 'Palaniuk',
+  },
+];
 
 export function addBook(addedTitle) {
   return {
@@ -25,7 +34,7 @@ export default function reducerBooks(state = initialState, action) {
       return [
         ...state,
         {
-          title: action.title,
+          title: action.payload,
         },
       ];
     case REMOVEBOOK:

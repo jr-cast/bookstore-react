@@ -13,7 +13,10 @@ export function status() {
 export default function reducerStatus(state = initialState, action) {
   switch (action.type) {
     case STATUS:
-      return 'Under Construction';
+      return [
+        ...state,
+        'Under Construction'
+      ]
     default:
       return state;
   }
