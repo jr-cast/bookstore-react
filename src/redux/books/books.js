@@ -14,10 +14,13 @@ const initialState = [
   },
 ];
 
-export function addBook(addedTitle) {
+export function addBook(addedTitle, addedAuthor) {
   return {
     type: ADDBOOK,
-    payload: addedTitle,
+    payload: {
+      title: addedTitle,
+      author: addedAuthor,
+    },
   };
 }
 
@@ -34,7 +37,8 @@ export default function reducerBooks(state = initialState, action) {
       return [
         ...state,
         {
-          title: action.payload,
+          title: action.payload.title,
+          author: action.payload.author,
         },
       ];
     case REMOVEBOOK:
