@@ -8,7 +8,7 @@ const initialState = [];
 export function addBook(addedTitle) {
   return {
     type: ADDBOOK,
-    payload: title
+    payload: addedTitle
   };
 }
 
@@ -19,13 +19,15 @@ export function removeBook(rmvTitle) {
   };
 }
 
-export default function reducer(state = initialState, action) {
+export default function reducerBooks(state = initialState, action) {
   switch (action.type) {
     case ADDBOOK:
-      return {
+      return [
         ...state,
-        payload: action.title
-      }
+        {
+          title: action.title
+        }
+      ]
     case REMOVEBOOK:
       return state.filter(item => item !== action.rmvTitle);
     default:
