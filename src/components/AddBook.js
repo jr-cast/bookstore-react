@@ -2,10 +2,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addBook } from '../redux/books/books';
 
-const title = document.getElementById('book');
-const author = document.getElementById('author');
-console.log(title, author);
-
 function AddBook() {
   const dispatch = useDispatch();
 

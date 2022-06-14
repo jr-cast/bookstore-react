@@ -15,8 +15,8 @@ export default function reducerStatus(state = initialState, action) {
     case STATUS:
       return [
         ...state,
-        'Under Construction'
-      ]
+        'Under Construction',
+      ];
     default:
       return state;
   }

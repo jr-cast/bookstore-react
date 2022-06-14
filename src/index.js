@@ -17,7 +17,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Provider store={store}><App /></Provider>} />
-        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories" element={<Provider store={store}><Categories /></Provider>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
