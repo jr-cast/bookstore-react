@@ -1,18 +1,13 @@
 // Defining action types
 const ADDBOOK = 'bookstore/books/ADDBOOK';
 const REMOVEBOOK = 'bookstore/books/REMOVEBOOK';
+const FETCH_API = 'bookstore/books/FETCH_API';
+
+// const appID = 'RytECUH07JHLCqOksOjA';
+// const baseUrl = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${appID}/books`;
 
 // Settting initial state
-const initialState = [
-  {
-    title: 'Ghost in the Shell',
-    author: 'Masamune',
-  },
-  {
-    title: 'Fight Club',
-    author: 'Palaniuk',
-  },
-];
+const initialState = [];
 
 export function addBook(addedTitle, addedAuthor) {
   return {
@@ -31,6 +26,13 @@ export function removeBook(index) {
   };
 }
 
+export function fetchBooksSuccess(books) {
+  return {
+    type: FETCH_API,
+    payload: books,
+  };
+}
+
 export default function reducerBooks(state = initialState, action) {
   switch (action.type) {
     case ADDBOOK:
@@ -45,6 +47,13 @@ export default function reducerBooks(state = initialState, action) {
       return [
         ...state.slice(0, action.payload),
         ...state.slice(action.payload + 1),
+      ];
+    case FETCH_API:
+      return [
+        ...state,
+        {
+          books: action.payload,
+        },
       ];
     default:
       return state;
