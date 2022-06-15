@@ -1,21 +1,33 @@
 // Defining action types
 const ADDBOOK = 'bookstore/books/ADDBOOK';
-const REMOVEBOOK = 'bookstore/books/ADDBOOK';
+const REMOVEBOOK = 'bookstore/books/REMOVEBOOK';
 
 // Settting initial state
-const initialState = [];
+const initialState = [
+  {
+    title: 'Ghost in the Shell',
+    author: 'Masamune',
+  },
+  {
+    title: 'Fight Club',
+    author: 'Palaniuk',
+  },
+];
 
-export function addBook(addedTitle) {
+export function addBook(addedTitle, addedAuthor) {
   return {
     type: ADDBOOK,
-    payload: addedTitle,
+    payload: {
+      title: addedTitle,
+      author: addedAuthor,
+    },
   };
 }
 
-export function removeBook(rmvTitle) {
+export function removeBook(index) {
   return {
     type: REMOVEBOOK,
-    payload: rmvTitle,
+    payload: index,
   };
 }
 
@@ -25,11 +37,15 @@ export default function reducerBooks(state = initialState, action) {
       return [
         ...state,
         {
-          title: action.title,
+          title: action.payload.title,
+          author: action.payload.author,
         },
       ];
     case REMOVEBOOK:
-      return state.filter((item) => item !== action.rmvTitle);
+      return [
+        ...state.slice(0, action.payload),
+        ...state.slice(action.payload + 1),
+      ];
     default:
       return state;
   }

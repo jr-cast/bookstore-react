@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/books';
 
 function BookCard({
   category, title, author, chapter,
 }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="card">
       <div className="meta">
@@ -12,7 +16,7 @@ function BookCard({
         <h4>{author}</h4>
         <div className="edit">
           <p>Comments</p>
-          <p>Remove</p>
+          <button type="submit" onClick={() => dispatch(removeBook(0))}>Remove</button>
           <p>Edit</p>
         </div>
       </div>

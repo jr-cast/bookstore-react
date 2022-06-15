@@ -7,5 +7,6 @@ const rootReducer = combineReducers({
   status: reducerStatus,
 });
 
-const store = configureStore(rootReducer);
-console.log(store);
+const store = configureStore({ reducer: rootReducer });
+
+export default store;
