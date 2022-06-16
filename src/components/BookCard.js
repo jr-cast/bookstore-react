@@ -7,6 +7,7 @@ function BookCard({
   category, title, author, chapter,
 }) {
   const dispatch = useDispatch();
+  const testID = 'gR3boHfr8FR0cjpPifW6G';
 
   return (
     <div className="card">
@@ -16,7 +17,7 @@ function BookCard({
         <h4>{author}</h4>
         <div className="edit">
           <p>Comments</p>
-          <button type="submit" onClick={() => dispatch(removeBook(0))}>Remove</button>
+          <button type="submit" onClick={() => dispatch(removeBook(testID))}>Remove</button>
           <p>Edit</p>
         </div>
       </div>
