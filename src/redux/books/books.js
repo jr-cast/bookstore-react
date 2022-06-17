@@ -9,7 +9,7 @@ const initialState = [];
 const appID = 'qaN82McBVLs48kXCiyvn';
 const baseUrl = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${appID}/books/`;
 
-export const addBook = (id, title, author, category) => () => {
+export const addBook = (id, title, author, category) => async (dispatch) => {
   const post = {
     method: 'POST',
     headers: {
@@ -24,18 +24,13 @@ export const addBook = (id, title, author, category) => () => {
   };
   fetch(baseUrl, post)
     .then((response) => console.log(response.status));
-  return {
+  dispatch({
     type: ADDBOOK,
-    payload: {
-      id,
-      title,
-      author,
-      category,
-    },
-  };
+    payload: { item_id: id, title, author, category },
+  });
 };
 
-export const removeBook = (bookId) => () => {
+export const removeBook = (bookId) => async (dispatch) => {
   const itemUrl = baseUrl + bookId;
   const post = {
     method: 'DELETE',
@@ -49,10 +44,10 @@ export const removeBook = (bookId) => () => {
   fetch(itemUrl, post)
     .then((res) => res.text())
     .then((data) => console.log(data));
-  return {
+  dispatch({
     type: REMOVEBOOK,
     payload: bookId,
-  };
+  });
 };
 
 export function fetchBooksSuccess(data) {
@@ -67,13 +62,10 @@ export default function reducerBooks(state = initialState, action) {
     case ADDBOOK:
       return [
         ...state,
-        {
-          title: action.payload.title,
-          author: action.payload.author,
-        },
+        action.payload,
       ];
     case REMOVEBOOK:
-      return [...state].filter((book) => book.id !== action.bookId);
+      return [...state.filter((book) => book.item_id !== action.payload)];
     case FETCH_API:
       return action.payload;
     default:

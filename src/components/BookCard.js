@@ -4,10 +4,9 @@ import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/books';
 
 function BookCard({
-  category, title, author, chapter,
+  category, title, author, chapter, id
 }) {
   const dispatch = useDispatch();
-  const testID = 'gR3boHfr8FR0cjpPifW6G';
 
   return (
     <div className="card">
@@ -17,7 +16,7 @@ function BookCard({
         <h4>{author}</h4>
         <div className="edit">
           <p>Comments</p>
-          <button type="submit" onClick={() => dispatch(removeBook(testID))}>Remove</button>
+          <button type="submit" onClick={() => dispatch(removeBook(id))}>Remove</button>
           <p>Edit</p>
         </div>
       </div>
@@ -44,6 +43,7 @@ BookCard.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string,
   chapter: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default BookCard;

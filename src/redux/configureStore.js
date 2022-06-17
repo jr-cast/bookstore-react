@@ -14,8 +14,13 @@ const rootReducer = combineReducers({
 const fetchBooks = () => function (dispatch) {
   fetch(baseUrl)
     .then((response) => response.json())
-    .then((data) => {
-      dispatch(fetchBooksSuccess(data));
+    .then((bookData) => {
+      const booksArray = Object.keys(bookData).map((key) => {
+        const newBook = bookData[key][0];
+        newBook.item_id = key;
+        return newBook;
+      });
+      dispatch(fetchBooksSuccess(booksArray));
     });
 };
 
