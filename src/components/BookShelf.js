@@ -7,7 +7,13 @@ function BookShelf() {
   const bookProps = [];
 
   books.forEach((item) => bookProps.push(
-    <BookCard category={item.category} author={item.author} title={item.title} id={item.item_id} />,
+    <BookCard
+      key={item.item_id}
+      category={item.category}
+      author={item.author}
+      title={item.title}
+      id={item.item_id}
+    />,
   ));
 
   return (

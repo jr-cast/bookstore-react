@@ -9,6 +9,26 @@ const initialState = [];
 const appID = 'qaN82McBVLs48kXCiyvn';
 const baseUrl = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${appID}/books/`;
 
+export function fetchBooksSuccess(data) {
+  return {
+    type: FETCH_API,
+    payload: data,
+  };
+}
+
+export const fetchBooks = () => function (dispatch) {
+  fetch(baseUrl)
+    .then((response) => response.json())
+    .then((bookData) => {
+      const booksArray = Object.keys(bookData).map((key) => {
+        const newBook = bookData[key][0];
+        newBook.item_id = key;
+        return newBook;
+      });
+      dispatch(fetchBooksSuccess(booksArray));
+    });
+};
+
 export const addBook = (id, title, author, category) => async (dispatch) => {
   const post = {
     method: 'POST',
@@ -23,7 +43,7 @@ export const addBook = (id, title, author, category) => async (dispatch) => {
     }),
   };
   fetch(baseUrl, post)
-    .then((response) => console.log(response.status));
+    .then((response) => response.status);
   dispatch({
     type: ADDBOOK,
     payload: {
@@ -45,19 +65,12 @@ export const removeBook = (bookId) => async (dispatch) => {
   };
   fetch(itemUrl, post)
     .then((res) => res.text())
-    .then((data) => console.log(data));
+    .then((data) => data);
   dispatch({
     type: REMOVEBOOK,
     payload: bookId,
   });
 };
-
-export function fetchBooksSuccess(data) {
-  return {
-    type: FETCH_API,
-    payload: data,
-  };
-}
 
 export default function reducerBooks(state = initialState, action) {
   switch (action.type) {

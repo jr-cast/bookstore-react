@@ -5,7 +5,6 @@ import { addBook } from '../redux/books/books';
 
 function AddBook() {
   const dispatch = useDispatch();
-  const uuid = nanoid();
   return (
     <div className="addBookCont">
       <h2>ADD NEW BOOK</h2>
@@ -17,7 +16,7 @@ function AddBook() {
           type="submit"
           onClick={() => dispatch(
             addBook(
-              uuid,
+              nanoid(),
               document.getElementById('book').value,
               document.getElementById('author').value,
               document.getElementById('category').value,
