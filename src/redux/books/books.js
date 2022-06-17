@@ -26,7 +26,9 @@ export const addBook = (id, title, author, category) => async (dispatch) => {
     .then((response) => console.log(response.status));
   dispatch({
     type: ADDBOOK,
-    payload: { item_id: id, title, author, category },
+    payload: {
+      item_id: id, title, author, category,
+    },
   });
 };
 

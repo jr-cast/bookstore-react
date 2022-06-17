@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/books';
 
 function BookCard({
-  category, title, author, chapter, id
+  category, title, author, chapter, id,
 }) {
   const dispatch = useDispatch();
 

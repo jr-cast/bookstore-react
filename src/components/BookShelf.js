@@ -4,9 +4,11 @@ import BookCard from './BookCard';
 function BookShelf() {
   const books = useSelector((state) => state.books);
 
-  const bookProps = []
+  const bookProps = [];
 
-  books.forEach((item) => bookProps.push(<BookCard category={item.category} author={item.author} title={item.title} id={item.item_id} />));
+  books.forEach((item) => bookProps.push(
+    <BookCard category={item.category} author={item.author} title={item.title} id={item.item_id} />,
+  ));
 
   return (
     <div className="bookShelf">
