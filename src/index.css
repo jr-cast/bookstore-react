@@ -74,7 +74,9 @@ a {
   width: 99.5vw;
   background-color: whitesmoke;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .card {
@@ -214,7 +216,7 @@ a {
 }
 
 .inputs #book {
-  width: 60%;
+  width: 40%;
   border: 1px solid lightgray;
   border-radius: 0.25rem;
   font-size: 1.25em;
@@ -222,6 +224,14 @@ a {
 }
 
 .inputs #author {
+  width: 20%;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+  font-size: 1.25em;
+  padding: 0.5em;
+}
+
+.inputs #category {
   width: 20%;
   border: 1px solid lightgray;
   border-radius: 0.25rem;

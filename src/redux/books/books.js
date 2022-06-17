@@ -1,51 +1,88 @@
 // Defining action types
 const ADDBOOK = 'bookstore/books/ADDBOOK';
 const REMOVEBOOK = 'bookstore/books/REMOVEBOOK';
+const FETCH_API = 'bookstore/books/FETCH_API';
 
 // Settting initial state
-const initialState = [
-  {
-    title: 'Ghost in the Shell',
-    author: 'Masamune',
-  },
-  {
-    title: 'Fight Club',
-    author: 'Palaniuk',
-  },
-];
+const initialState = [];
 
-export function addBook(addedTitle, addedAuthor) {
+const appID = 'qaN82McBVLs48kXCiyvn';
+const baseUrl = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${appID}/books/`;
+
+export function fetchBooksSuccess(data) {
   return {
+    type: FETCH_API,
+    payload: data,
+  };
+}
+
+export const fetchBooks = () => function (dispatch) {
+  fetch(baseUrl)
+    .then((response) => response.json())
+    .then((bookData) => {
+      const booksArray = Object.keys(bookData).map((key) => {
+        const newBook = bookData[key][0];
+        newBook.item_id = key;
+        return newBook;
+      });
+      dispatch(fetchBooksSuccess(booksArray));
+    });
+};
+
+export const addBook = (id, title, author, category) => async (dispatch) => {
+  const post = {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: id,
+      title,
+      author,
+      category,
+    }),
+  };
+  fetch(baseUrl, post)
+    .then((response) => response.status);
+  dispatch({
     type: ADDBOOK,
     payload: {
-      title: addedTitle,
-      author: addedAuthor,
+      item_id: id, title, author, category,
     },
-  };
-}
+  });
+};
 
-export function removeBook(index) {
-  return {
-    type: REMOVEBOOK,
-    payload: index,
+export const removeBook = (bookId) => async (dispatch) => {
+  const itemUrl = baseUrl + bookId;
+  const post = {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: bookId,
+    }),
   };
-}
+  fetch(itemUrl, post)
+    .then((res) => res.text())
+    .then((data) => data);
+  dispatch({
+    type: REMOVEBOOK,
+    payload: bookId,
+  });
+};
 
 export default function reducerBooks(state = initialState, action) {
   switch (action.type) {
     case ADDBOOK:
       return [
         ...state,
-        {
-          title: action.payload.title,
-          author: action.payload.author,
-        },
+        action.payload,
       ];
     case REMOVEBOOK:
-      return [
-        ...state.slice(0, action.payload),
-        ...state.slice(action.payload + 1),
-      ];
+      return [...state.filter((book) => book.item_id !== action.payload)];
+    case FETCH_API:
+      return action.payload;
     default:
       return state;
   }

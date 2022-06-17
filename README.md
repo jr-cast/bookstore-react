@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Bookstore: Use Redux in React components 🔩
+# Bookstore: connect to API 🛰️
 
 > "Bookstore" is a website for managing content related to books. It is a Single Page App (SPA) that make use of create-react-app and react router and allows users to:
 

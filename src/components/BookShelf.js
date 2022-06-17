@@ -1,10 +1,24 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import BookCard from './BookCard';
 
 function BookShelf() {
+  const books = useSelector((state) => state.books);
+
+  const bookProps = [];
+
+  books.forEach((item) => bookProps.push(
+    <BookCard
+      key={item.item_id}
+      category={item.category}
+      author={item.author}
+      title={item.title}
+      id={item.item_id}
+    />,
+  ));
+
   return (
     <div className="bookShelf">
-      <BookCard category="Science fiction" title="Ghost in the shell" author="Masamune Shirow" chapter="Chapter 19" />
+      {bookProps}
     </div>
   );
 }
