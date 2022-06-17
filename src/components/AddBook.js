@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addBook } from '../redux/books/books';
 
-function AddBook() {
+const AddBook = () => {
   const dispatch = useDispatch();
+
   return (
     <div className="addBookCont">
       <h2>ADD NEW BOOK</h2>
@@ -13,6 +14,7 @@ function AddBook() {
         <input id="author" type="text" placeholder="Author" />
         <input id="category" type="text" placeholder="Category" />
         <button
+          id="submitBtn"
           type="submit"
           onClick={() => dispatch(
             addBook(
@@ -28,6 +30,6 @@ function AddBook() {
       </div>
     </div>
   );
-}
+};
 
 export default AddBook;
