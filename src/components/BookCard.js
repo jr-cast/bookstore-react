@@ -16,7 +16,7 @@ function BookCard({
         <h4>{author}</h4>
         <div className="edit">
           <p>Comments</p>
-          <button type="submit" onClick={() => dispatch(removeBook(id))}>Remove</button>
+          <button id="removeBtn" type="submit" onClick={() => dispatch(removeBook(id))}>Remove</button>
           <p>Edit</p>
         </div>
       </div>
