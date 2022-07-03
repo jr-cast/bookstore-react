@@ -76,7 +76,7 @@ a {
 }
 
 .bookShelf {
-  min-height: 65vh;
+  height: 63vh;
   width: 99.5vw;
   background-color: whitesmoke;
   display: flex;
@@ -84,6 +84,7 @@ a {
   justify-content: flex-start;
   align-items: center;
   padding-bottom: 2em;
+  overflow-y: scroll;
 }
 
 .card {
@@ -94,7 +95,7 @@ a {
   width: 75%;
   min-width: 55em;
   justify-content: space-around;
-  margin-top: 2em;
+  margin-top: 1em;
   padding-left: 1em;
   box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
 }
