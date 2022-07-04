@@ -276,3 +276,55 @@ a {
   border-radius: 0.25rem;
   cursor: pointer;
 }
+
+@media all and (max-width: 950px) {
+  .card {
+    font-family: 'Roboto Slab', serif;
+    display: flex;
+    background-color: white;
+    height: 10em;
+    min-width: 40em;
+    justify-content: flex-start;
+    margin-top: 1em;
+    padding-left: 1em;
+    box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: flex;
+    width: 20%;
+    height: 8em;
+    padding: 1em;
+  }
+
+  .percent {
+    width: 10em;
+    height: 8em;
+    padding: 1em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .percent .oval {
+    display: none;
+  }
+
+  .addBookCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 10em;
+    min-width: 42em;
+    border-top: 1px solid gray;
+  }
+
+  .inputs {
+    display: flex;
+    gap: 0.5em;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
