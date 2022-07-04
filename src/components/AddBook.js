@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addBook } from '../redux/books/books';
 
 const AddBook = () => {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [category, setCategory] = useState('');
+  const titleRef = useRef(null);
+  const authorRef = useRef(null);
+  const catRef = useRef(null);
 
   const clearInputs = (event) => {
     console.log('clearedInputs done!');
     event.preventDefault();
-    setTitle = ('');
-    setAuthor = ('');
+    event.target.reset();
   };
 
   return (
@@ -22,26 +21,23 @@ const AddBook = () => {
         <h2>ADD NEW BOOK</h2>
         <div className="inputs">
           <input
+            ref={titleRef}
             id="book"
             type="text"
-            onChange={(event) => setTitle(event.target.value)}
-            value={title}
             placeholder="Book title"
           />
           <input
+            ref={authorRef}
             id="author"
             type="text"
-            onChange={(event) => setAuthor(event.target.value)}
-            value={author}
             placeholder="Author"
           />
 
           <input
+            ref={catRef}
             id="category"
             type="text"
             placeholder="Category"
-            onChange={(event) => setCategory(event.target.value)}
-            value={category}
           />
 
           <button
